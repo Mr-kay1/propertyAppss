@@ -1,0 +1,109 @@
+{% extends "admin/admin_login.html"%}
+{% block admin_input %}
+   <div class="col md 3"></div>
+   <div class="col-md-6">
+    {% with m=get_flashed_messages() %}
+    {% if m%}
+      <!-- <div class="alert alert-danger"> {{ m|safe }}</div> -->
+      {% for msg in m %}
+      <div class="alert alert-danger">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+    {% endwith%}
+       <form action="" method="post" enctype="multipart/form-data">
+        <div class="row">
+        <div class="col-md-6">
+            <div class="form-group row mb-3">
+                <label for="" class="col md 3">property address: </label>
+                <div class="col-md-10">
+                    <input type="text" name="address" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group row mb-3">
+                <label for="" class="col md 3">state</label>
+                <select name="state" id="state" class="form-control border-success">
+                    <option value="">Please select</option>
+                    {% for x in states %}
+                        <option value="{{x.state_id}}">{{x.state_name}}</option>
+                    {% endfor%}
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group row mb-3">
+                <label for="" class="col-md-3">Description:</label>
+                <div class="col-md-10">
+                    <textarea name="desc" id="" cols="20" rows="5" class="form-control"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+        <div class="form-group row mb-3">
+            <label for="" class="col-md-3">property_price:</label>
+            <div class="col-md-10">
+                <input type="number" name="property_price" class="form-control">
+            </div>
+        </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group row mb-3">
+                <label for="" class="col-md-3">Agent PhoneNumber:</label>
+                <div class="col-md-10">
+                    <input type="number" name="number" class="form-control">
+                </div>
+            </div>
+            </div>
+
+        <div class="col-md-6">
+            <div class="form-group row mb-3">
+                <label for="" class="col-md-3">property_pic:</label>
+                <input type="file" name="picture" >
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group row mb-3">
+                <label for="" class="col-md-3">property_pic2:</label>
+                <input type="file" name="picture" >
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group row mb-3">
+                <label for="" class="col-md-3">property_pic3:</label>
+                <input type="file" name="picture" >
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group row mb-3">
+                <label for="" class="col-md-3">property_pic4:</label>
+                <input type="file" name="picture" >
+            </div>
+        </div>
+       
+        <div class="col-md-6">
+            <div class="form-group row mb-3">
+                <select name="category" id="category" class="form-control border-success">
+                    <option value="">Please select</option>
+                    {% for a in cat_egory %}
+                        <option value="{{a.category_id}}">{{a.category_name}}</option>
+                    {% endfor%}
+                </select>
+            </div>
+        </div>
+ 
+        <div class="form-group row mb-3">
+            <button class="btn btn-success">Add</button>
+        </div>
+        </div>
+       </form>
+   </div>
+   <div class="col md 3"></div>
+{% endblock %}

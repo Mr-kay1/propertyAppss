@@ -1,0 +1,40 @@
+{% extends "admin/admin_dashboard.html"%}
+{% block admin_table %}
+
+<h3 class="fs-4 mb-3">Feedback</h3> 
+{% with x=get_flashed_messages() %}
+{% if x %}
+  {% for msg in x%}
+    <div class="alert alert-danger">{{ msg }}</div>
+  {% endfor %}
+{% endif %}
+{% endwith %} 
+<div class="col">
+<table class="table bg-white rounded shadow-sm  table-hover">
+    <thead>
+        <tr>
+            <th scope="col" width="50">S/N</th>
+            <th scope="col">Fullname</th>
+            <th scope="col">Email</th>
+            <th scope="col">message</th>
+            <th scope="col">action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in data%}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{t.contact_fname}}</td>
+            <td>{{t.contact_email }}</td>
+            <td>{{t.contact_messgae}}</td>
+            <td>
+                <td>
+                    <a href="{{ url_for('delete_feedback',id=t.contact_id)}}" class="btn btn-danger" onclick="return confirm('Do you want to delete')"><i class="fa fa-trash prop_edit"></i>Delete</a></td>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

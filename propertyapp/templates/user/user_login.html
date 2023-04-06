@@ -1,0 +1,25 @@
+{% extends "user/form_layout.html"%}
+           {% block form %}
+              <div class="col-md-4"></div>
+              <div class="col-md-4 user_reg user_form">
+                {% with m=get_flashed_messages() %}
+                {% if m %}
+                  {% for msg in m%}
+                    <div class="alert alert-danger">{{ msg }}</div>
+                  {% endfor %}
+                {% endif %}
+                {% endwith %} 
+                <form action="" method="post" class="form-label ">
+                  <h3>Login</h3>
+                  <input type="text" name="name" id="" placeholder="fullname" class="form-control mt-2">
+                  <input type="password" name="password" id="pwd" placeholder="password" class="form-control mt-3">
+                  <button class="form_login mt-3 col-12">login</button>
+                  <div class="signup_link">
+                    <p>Don't have account? <a href="{{ url_for('user_reg')}}">Signup</a></p>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+            {% endblock %}
+           

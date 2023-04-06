@@ -1,0 +1,49 @@
+{% extends "user/home_layout.html" %}
+{% block body %}
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <h4>{{data.category_name}}</h4>
+      <p class="details"></p>
+      <h6>{{property_deets.property_desc}}</h6>
+        <p class="details"></p>
+      {% for m in imag%}
+      <div class="col-md-6">
+        <img src="{{url_for('static',filename='uploads/'+m.pic_name)}}" class="w-100 img-fluid" alt="..." style="padding: 10px">
+      </div>
+      {%endfor%}
+      <div class="col-md-6 mt-5">
+        <div class="row">
+          <div class="col">
+            <h4>Property address</h4>
+            <p class="details">{{property_deets.property_address}}</p>
+          </div>
+          <div class="col">
+            <h4>Price</h4>
+        <p class="details">{{property_deets.property_price}}</p>
+
+          </div>
+          <div class="col">
+            <h4>Agent phone number</h4>
+        <p class="details">{{property_deets.agent_phone}}</p>                 
+
+          </div>
+        </div>
+        
+        
+        
+       
+
+        
+
+        <div class="contact">
+          <p class="details">For more information and enquires, you can <a href="{{url_for('contact')}}" style="color:blue; text-decoration:underline">write to us</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock%}
+
+                       

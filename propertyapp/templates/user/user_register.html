@@ -1,0 +1,59 @@
+{% extends "user/form_layout.html"%}
+           {% block form %}
+              <div class="col-md-4"></div>
+              <div class="col-md-4 user_reg user_form">
+                {% with m=get_flashed_messages() %}
+                {% if m %}
+                  {% for msg in m%}
+                    <div class="alert alert-danger">{{ msg }}</div>
+                  {% endfor %}
+                {% endif %}
+                {% endwith %} 
+                <form action="" method="post" class="form-label">
+                  <h3>Register</h3>
+                  <input type="text" name="name" id="" placeholder="fullname" class="form-control mt-2">
+                  <input type="email" name="email" id="email" placeholder="Email" class="form-control mt-3">
+                  <small id="small"></small>
+                  <textarea name="message" placeholder="address" class="form-control mt-3"></textarea>
+                  <input type="number" name="phone" id="" class="form-control mt-3">
+                  <input type="password" name="password" id="pwd" placeholder="password" class="form-control mt-3">
+                  <button type="submit" class="form_login mt-3 col-12">login</button>
+                  <div class="signup_link">
+                    <p>Already have account? <a href="{{ url_for('user_login')}}">:Login</a></p>
+                  </div>
+                </form>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+            {% endblock %}
+
+            {% block customjs%}
+            <script> 
+              $(document).ready(function(){
+                $('#email').change(function(){
+                  var email = $(this).val()
+                  var data2send = {"email":email}
+                  //ajax call
+                  $.ajax({
+                    url: "/check_username",
+                    data:data2send,
+                    type:"POST",
+                    dataType: "json",
+                    success: function(rsp){
+                      $('#small').html(rsp['feedback'])
+                      $('#small').removeClass('text-white text-danger')
+                      if(rsp['status']==1){
+                        $('#small').addClass('text-white')
+                      }else{
+                        $('#small').addClass('text-danger')
+                      }
+                    },
+                    error:function(e){
+                      console.log(e)
+                    }
+                  })
+                })
+              })
+            </script>
+          {% endblock%}
+           

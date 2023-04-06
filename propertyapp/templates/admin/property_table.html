@@ -1,0 +1,55 @@
+{% extends "admin/admin_dashboard.html"%}
+{% block admin_table %}
+
+<h3 class="fs-4 mb-3">property listing</h3> 
+{% with x=get_flashed_messages() %}
+{% if x %}
+  {% for msg in x%}
+    <div class="alert alert-danger">{{ msg }}</div>
+  {% endfor %}
+{% endif %}
+{% endwith %} 
+<div class="col">
+<div class="table-responsive">
+<table class="table bg-white rounded shadow-sm  table-hover">
+    <thead>
+        <tr>
+            <th scope="col" width="50">S/N</th>
+            <th scope="col">property address</th>
+            <th scope="col">property price</th>
+            <th scope="col">date added</th>
+            <th scope="col">property description</th>
+            <th scope="col">status</th>
+            <th scope="col">action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in data%}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{t.property_address}}</td>
+            <td>{{t.property_price }}</td>
+            <td>{{t.date_added}}</td>
+            <td>{{t.property_desc}}</td>
+            <td>{{t.picid}}</td>
+            <td>
+                {% if t.property_status == 'Buy': %}
+                 <span class="badge bg-success">Buy</span>
+                {% else %}
+                 <span class="badge bg-warning">Sold</span>
+                 {% endif %}
+            </td>
+            <td>
+                <td>
+                    <a href="/admin/property/edit/{{t.property_id}}" class="btn btn-success"><i class="fa fa-edit prop_edit"></i>Edit</a>
+                    <a href="{{ url_for('delete',id=t.property_id)}}" class="btn btn-danger" onclick="return confirm('Do you want to delete')"><i class="fa fa-trash prop_edit"></i>Delete</a>
+                </td>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+
+{% endblock %}

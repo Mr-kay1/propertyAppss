@@ -1,0 +1,27 @@
+{% extends "user/home_layout.html" %}
+
+{% block body%}
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <h2 class="text-center">About us</h2>
+                    <p>
+                       Kay's Property a highly reputable company that has been delivering exceptional real estate development and management services in Nigeria. As one of the top Realty in the country, we have created a competitive edge for investors, buyers, and sellers by prioritizing their needs.
+
+                        We have built a strong team of professional architects, engineers, site managers, lawyers, and marketers who place a premium on customer satisfaction over quick results. With specialization in new construction, sales, property management, valuation, and interior building works, we are always available to ensure that clients achieve their goals. We understand the dynamics that inspire people to invest in a quality home and how personal each decision is. Therefore, our focus as a company is on creating real estate solutions that work best for our clients and add tangible value across property sectors. In recognition of our drive for exemplary work, we have delivered premium quality homes to hundreds of clients in need of class, comfort, and exclusivity.
+
+                        Through our deep understanding of the market, latest technology, and the changing trends, we guide clients to achieve the best results in this fast-transitioning industry. Whether you are a buyer or seller, you will appreciate our integrity, competence, and proven ability to provide personalised, clear, and well-researched advice on real estate in Lagos.
+                    </p>
+                </div>
+                <div class="col-md-3"></div>
+
+                <div class="col-md-12 mt-5 text-center">
+                    <p class="details">Buy your dream home today</p>
+                    <a href="{{url_for('contact')}}"><button class="btn btn-secondary">Contact us</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

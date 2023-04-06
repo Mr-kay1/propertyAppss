@@ -1,0 +1,21 @@
+{% extends "admin/admin_login.html"%}
+ {% block admin_input %}
+  <div class="col-md-4"></div>
+  <div class="col-md-4 admin_form">
+      
+    <form method="post" action="/admin/update_property" class="form-label">
+        <p>
+            <input type="hidden" name="propid" value="{{property_deets.property_id}}" class="form-control">
+            <select name="status">
+                <option value="Buy">Buy</option>
+                <option value="Sold">Sold</option>
+            </select>
+        </p>
+        <p> <button class="btn btn-success">Submit</button> </p>
+    </form>
+    
+  </div>
+     <div class="col-md-4"></div>
+   </div>
+{% endblock %}
+          

@@ -1,0 +1,40 @@
+{% extends "admin/admin_dashboard.html"%}
+{% block admin_table %}
+
+
+<h3 class="fs-4 mb-3">Categories</h3> 
+{% with x=get_flashed_messages() %}
+{% if x %}
+  {% for msg in x%}
+    <div class="alert alert-danger">{{ msg }}</div>
+  {% endfor %}
+{% endif %}
+{% endwith %} 
+<div class="col">
+  
+    <a href="{{url_for('add_category')}}"><button class="btn btn-outline-danger">Add categories</button></a>
+  
+<table class="table bg-white rounded shadow-sm  table-hover mt-5">
+    <thead>
+        <tr>
+            <th scope="col" width="50">S/N</th>
+            <th scope="col">category name</th>
+            <th scope="col">action</th>
+        </tr>
+    </thead>
+    <tbody>
+      {% for z in catt%}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{z.category_name}}</td>
+            <td>
+            <td>
+             <a href="{{ url_for('delete_category',id=z.category_id)}}" class="btn btn-danger" onclick="return confirm('Do you want to delete')"><i class="fa fa-trash prop_edit"></i>Delete</a></td>
+            </td>
+        </tr>
+    {% endfor %}  
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
